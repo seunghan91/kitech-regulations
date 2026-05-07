@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>한국생산기술연구원(KITECH) 관련 법규·규정 리스트</title>
-<meta name="description" content="한국생산기술연구원(KITECH)의 설립근거 법령부터 내부규정까지 카테고리별 정리. 법제처·KITECH 공식 출처 하이퍼링크 제공.">
+<meta name="description" content="한국생산기술연구원(KITECH)의 설립근거 법령 및 내부규정. 외부 공개된 원문만 직링크 제공 + 비공개 규정 명시.">
 <style>
   :root {
     --primary: #1e40af;
@@ -16,6 +16,8 @@
     --border: #e2e8f0;
     --hover: #eff6ff;
     --accent: #10b981;
+    --warn: #f59e0b;
+    --danger: #ef4444;
   }
   [data-theme="dark"] {
     --primary: #60a5fa;
@@ -31,338 +33,171 @@
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans KR', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.6;
-    padding: 2rem 1rem;
-    transition: background 0.2s, color 0.2s;
+    background: var(--bg); color: var(--text); line-height: 1.6;
+    padding: 2rem 1rem; transition: background 0.2s, color 0.2s;
   }
   .container { max-width: 1100px; margin: 0 auto; }
   header {
     background: linear-gradient(135deg, var(--primary), var(--primary-light));
-    color: white;
-    padding: 2.5rem 2rem;
-    border-radius: 12px;
-    margin-bottom: 1.5rem;
-    box-shadow: 0 4px 20px rgba(30, 64, 175, 0.15);
+    color: white; padding: 2.5rem 2rem; border-radius: 12px;
+    margin-bottom: 1.5rem; box-shadow: 0 4px 20px rgba(30, 64, 175, 0.15);
     position: relative;
   }
   header h1 { font-size: 1.8rem; margin-bottom: 0.5rem; }
   header p { opacity: 0.9; font-size: 0.95rem; }
   header .meta { margin-top: 1rem; font-size: 0.85rem; opacity: 0.8; }
   .theme-toggle {
-    position: absolute;
-    top: 1.25rem;
-    right: 1.25rem;
-    background: rgba(255,255,255,0.2);
-    border: none;
-    color: white;
-    width: 40px; height: 40px;
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 1.2rem;
-    transition: background 0.15s;
+    position: absolute; top: 1.25rem; right: 1.25rem;
+    background: rgba(255,255,255,0.2); border: none; color: white;
+    width: 40px; height: 40px; border-radius: 50%;
+    cursor: pointer; font-size: 1.2rem; transition: background 0.15s;
   }
   .theme-toggle:hover { background: rgba(255,255,255,0.3); }
-
   .controls {
-    background: var(--card);
-    padding: 1rem 1.25rem;
-    border-radius: 12px;
-    margin-bottom: 1.5rem;
-    border: 1px solid var(--border);
-    display: flex;
-    gap: 0.75rem;
-    align-items: center;
-    flex-wrap: wrap;
+    background: var(--card); padding: 1rem 1.25rem; border-radius: 12px;
+    margin-bottom: 1.5rem; border: 1px solid var(--border);
+    display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap;
   }
-  .search-box {
-    flex: 1;
-    min-width: 200px;
-    position: relative;
-  }
+  .search-box { flex: 1; min-width: 200px; position: relative; }
   .search-box input {
-    width: 100%;
-    padding: 0.6rem 0.9rem 0.6rem 2.3rem;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    font-size: 0.95rem;
-    background: var(--bg);
-    color: var(--text);
-    transition: border 0.15s, box-shadow 0.15s;
+    width: 100%; padding: 0.6rem 0.9rem 0.6rem 2.3rem;
+    border: 1px solid var(--border); border-radius: 8px;
+    font-size: 0.95rem; background: var(--bg); color: var(--text);
   }
   .search-box input:focus {
-    outline: none;
-    border-color: var(--primary-light);
+    outline: none; border-color: var(--primary-light);
     box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
   }
   .search-box::before {
-    content: "🔍";
-    position: absolute;
-    left: 0.75rem;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 0.95rem;
+    content: "🔍"; position: absolute; left: 0.75rem;
+    top: 50%; transform: translateY(-50%); font-size: 0.95rem;
   }
-  .stat {
-    font-size: 0.85rem;
-    color: var(--muted);
-    padding: 0.4rem 0.8rem;
-    background: var(--bg);
-    border-radius: 6px;
+  .filter-btn {
+    background: var(--bg); border: 1px solid var(--border); color: var(--text);
+    padding: 0.5rem 0.9rem; border-radius: 8px; font-size: 0.85rem;
+    cursor: pointer; transition: all 0.15s;
   }
+  .filter-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
+  .filter-btn:hover:not(.active) { border-color: var(--primary-light); }
+  .stat { font-size: 0.85rem; color: var(--muted); padding: 0.4rem 0.8rem; background: var(--bg); border-radius: 6px; }
   .stat strong { color: var(--primary); }
 
   .toc {
-    background: var(--card);
-    padding: 1.5rem;
-    border-radius: 12px;
-    margin-bottom: 1.5rem;
-    border: 1px solid var(--border);
+    background: var(--card); padding: 1.5rem; border-radius: 12px;
+    margin-bottom: 1.5rem; border: 1px solid var(--border);
   }
   .toc h2 { font-size: 1.1rem; margin-bottom: 1rem; color: var(--primary); }
   .toc ul { list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 0.5rem; }
   .toc a {
-    display: block;
-    padding: 0.5rem 0.75rem;
-    color: var(--text);
-    text-decoration: none;
-    border-radius: 6px;
-    font-size: 0.9rem;
-    transition: background 0.15s;
+    display: block; padding: 0.5rem 0.75rem; color: var(--text);
+    text-decoration: none; border-radius: 6px; font-size: 0.9rem; transition: background 0.15s;
   }
   .toc a:hover { background: var(--hover); color: var(--primary); }
 
   .info-banner {
-    background: var(--card);
-    border-left: 4px solid var(--accent);
-    padding: 0.85rem 1.1rem;
-    border-radius: 8px;
-    font-size: 0.88rem;
-    color: var(--text);
-    margin-bottom: 1.5rem;
-    border: 1px solid var(--border);
-    border-left-width: 4px;
+    background: var(--card); border-left: 4px solid var(--accent);
+    padding: 0.85rem 1.1rem; border-radius: 8px; font-size: 0.88rem;
+    color: var(--text); margin-bottom: 1rem; border: 1px solid var(--border); border-left-width: 4px;
   }
   .info-banner strong { color: var(--accent); }
+  .legend {
+    display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 1.5rem;
+    font-size: 0.8rem; padding: 0.5rem 0;
+  }
+  .legend-item { display: inline-flex; align-items: center; gap: 0.3rem; color: var(--muted); }
 
   section {
-    background: var(--card);
-    padding: 1.75rem;
-    border-radius: 12px;
-    margin-bottom: 1.5rem;
-    border: 1px solid var(--border);
+    background: var(--card); padding: 1.75rem; border-radius: 12px;
+    margin-bottom: 1.5rem; border: 1px solid var(--border);
     box-shadow: 0 1px 3px rgba(0,0,0,0.03);
   }
   section.hidden { display: none; }
   section h2 {
-    font-size: 1.25rem;
-    color: var(--primary);
-    margin-bottom: 1rem;
-    padding-bottom: 0.6rem;
-    border-bottom: 2px solid var(--border);
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
+    font-size: 1.25rem; color: var(--primary); margin-bottom: 1rem;
+    padding-bottom: 0.6rem; border-bottom: 2px solid var(--border);
+    display: flex; align-items: center; gap: 0.5rem;
   }
   section h2 .num {
-    background: var(--primary);
-    color: white;
-    width: 28px; height: 28px;
-    border-radius: 50%;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.85rem;
-    font-weight: bold;
+    background: var(--primary); color: white;
+    width: 28px; height: 28px; border-radius: 50%;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-size: 0.85rem; font-weight: bold;
   }
   section h2 .count {
-    margin-left: auto;
-    font-size: 0.75rem;
-    background: var(--bg);
-    color: var(--muted);
-    padding: 0.2rem 0.6rem;
-    border-radius: 12px;
-    font-weight: normal;
+    margin-left: auto; font-size: 0.75rem; background: var(--bg); color: var(--muted);
+    padding: 0.2rem 0.6rem; border-radius: 12px; font-weight: normal;
   }
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 0.92rem;
-  }
-  th, td {
-    padding: 0.7rem 0.8rem;
-    text-align: left;
-    border-bottom: 1px solid var(--border);
-  }
+  table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+  th, td { padding: 0.7rem 0.8rem; text-align: left; border-bottom: 1px solid var(--border); }
   th {
-    background: var(--bg);
-    font-weight: 600;
-    color: var(--muted);
-    font-size: 0.82rem;
-    text-transform: uppercase;
-    letter-spacing: 0.03em;
+    background: var(--bg); font-weight: 600; color: var(--muted);
+    font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.03em;
   }
   tr:hover td { background: var(--hover); }
   tr.hidden { display: none; }
   td.date { color: var(--muted); white-space: nowrap; font-size: 0.85rem; }
-  td.actions { white-space: nowrap; text-align: right; }
-  a {
-    color: var(--primary-light);
-    text-decoration: none;
-    border-bottom: 1px dashed transparent;
-    transition: all 0.15s;
-  }
-  a:hover {
-    color: var(--primary);
-    border-bottom-color: var(--primary);
-  }
-  a.law { font-weight: 500; }
-  a.internal {
-    color: var(--text);
-    border-bottom: 1px dotted var(--muted);
-  }
-  a.internal:hover {
-    color: var(--primary);
-    border-bottom-color: var(--primary);
-  }
-  .external::after {
-    content: " ↗";
-    font-size: 0.8em;
-    opacity: 0.6;
-  }
-  .row-actions {
-    display: inline-flex;
-    gap: 0.3rem;
-    margin-left: 0.5rem;
-    opacity: 0;
-    transition: opacity 0.15s;
-  }
-  tr:hover .row-actions { opacity: 1; }
-  .icon-btn {
-    background: var(--bg);
-    border: 1px solid var(--border);
-    color: var(--muted);
-    width: 26px; height: 26px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 0.8rem;
-    transition: all 0.15s;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .icon-btn:hover {
-    background: var(--primary);
-    color: white;
-    border-color: var(--primary);
-  }
-  mark {
-    background: #fde047;
-    color: #713f12;
-    padding: 0 2px;
-    border-radius: 2px;
-  }
-  [data-theme="dark"] mark {
-    background: #facc15;
-    color: #1e293b;
-  }
+  td.status { white-space: nowrap; }
 
-  /* Modal */
+  a { color: var(--primary-light); text-decoration: none; border-bottom: 1px dashed transparent; transition: all 0.15s; }
+  a:hover { color: var(--primary); border-bottom-color: var(--primary); }
+  a.law { font-weight: 500; }
+  a.external::after { content: " ↗"; font-size: 0.8em; opacity: 0.6; }
+
+  .badge {
+    display: inline-flex; align-items: center; gap: 0.2rem;
+    padding: 0.15rem 0.55rem; border-radius: 12px;
+    font-size: 0.72rem; font-weight: 600;
+  }
+  .badge-open { background: #d1fae5; color: #065f46; }
+  .badge-closed { background: #fee2e2; color: #991b1b; }
+  .badge-law { background: #dbeafe; color: #1e3a8a; }
+  [data-theme="dark"] .badge-open { background: #064e3b; color: #6ee7b7; }
+  [data-theme="dark"] .badge-closed { background: #7f1d1d; color: #fca5a5; }
+  [data-theme="dark"] .badge-law { background: #1e3a8a; color: #93c5fd; }
+
+  .closed-name { color: var(--muted); }
+
   .modal-backdrop {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.5);
-    z-index: 100;
-    align-items: center;
-    justify-content: center;
-    padding: 1rem;
+    display: none; position: fixed; inset: 0;
+    background: rgba(0,0,0,0.5); z-index: 100;
+    align-items: center; justify-content: center; padding: 1rem;
   }
   .modal-backdrop.show { display: flex; }
   .modal {
-    background: var(--card);
-    border-radius: 12px;
-    max-width: 540px;
-    width: 100%;
-    padding: 1.75rem;
+    background: var(--card); border-radius: 12px;
+    max-width: 540px; width: 100%; padding: 1.75rem;
     box-shadow: 0 20px 60px rgba(0,0,0,0.3);
   }
-  .modal h3 {
-    color: var(--primary);
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-  .modal ol {
-    margin: 1rem 0 1.5rem 1.5rem;
-    line-height: 1.9;
-  }
-  .modal ol li { padding-left: 0.3rem; }
+  .modal h3 { color: var(--primary); font-size: 1.2rem; margin-bottom: 1rem; }
+  .modal ol, .modal ul { margin: 1rem 0 1.5rem 1.5rem; line-height: 1.9; }
   .modal-close {
-    background: var(--primary);
-    color: white;
-    border: none;
-    padding: 0.6rem 1.5rem;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 0.95rem;
-    width: 100%;
+    background: var(--primary); color: white; border: none;
+    padding: 0.6rem 1.5rem; border-radius: 8px; cursor: pointer;
+    font-size: 0.95rem; width: 100%;
   }
   .modal-close:hover { background: var(--primary-light); }
-  .modal kbd {
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: 2px 6px;
-    font-size: 0.85em;
-    font-family: ui-monospace, monospace;
-  }
 
-  /* Toast */
   .toast {
-    position: fixed;
-    bottom: 2rem;
-    left: 50%;
+    position: fixed; bottom: 2rem; left: 50%;
     transform: translateX(-50%) translateY(100px);
-    background: var(--text);
-    color: var(--card);
-    padding: 0.75rem 1.5rem;
-    border-radius: 8px;
-    font-size: 0.9rem;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    transition: transform 0.3s;
-    z-index: 200;
+    background: var(--text); color: var(--card);
+    padding: 0.75rem 1.5rem; border-radius: 8px; font-size: 0.9rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2); transition: transform 0.3s; z-index: 200;
   }
   .toast.show { transform: translateX(-50%) translateY(0); }
 
   .sources {
-    background: var(--card);
-    border-left: 4px solid #eab308;
-    padding: 1rem 1.25rem;
-    border-radius: 8px;
-    margin-top: 1rem;
-    border: 1px solid var(--border);
-    border-left-width: 4px;
+    background: var(--card); border-left: 4px solid #eab308;
+    padding: 1rem 1.25rem; border-radius: 8px; margin-top: 1rem;
+    border: 1px solid var(--border); border-left-width: 4px;
   }
   .sources h3 { font-size: 1rem; color: #eab308; margin-bottom: 0.5rem; }
   .sources ul { list-style: none; }
   .sources li { padding: 0.3rem 0; font-size: 0.9rem; }
-  footer {
-    text-align: center;
-    color: var(--muted);
-    font-size: 0.85rem;
-    padding: 2rem 0;
-  }
+
+  footer { text-align: center; color: var(--muted); font-size: 0.85rem; padding: 2rem 0; }
   footer a { color: var(--muted); }
-  .empty {
-    text-align: center;
-    color: var(--muted);
-    padding: 3rem 1rem;
-    display: none;
-  }
+  .empty { text-align: center; color: var(--muted); padding: 3rem 1rem; display: none; }
   .empty.show { display: block; }
 
   @media (max-width: 640px) {
@@ -372,7 +207,6 @@
     section { padding: 1.25rem; }
     table { font-size: 0.85rem; }
     th, td { padding: 0.5rem 0.4rem; }
-    .row-actions { opacity: 1; }
   }
 </style>
 </head>
@@ -382,20 +216,29 @@
 <header>
   <button class="theme-toggle" onclick="toggleTheme()" aria-label="다크모드 전환" id="themeBtn">🌙</button>
   <h1>한국생산기술연구원(KITECH) 관련 법규·규정 리스트</h1>
-  <p>설립근거 법령부터 내부규정까지 카테고리별 정리 — 모든 법령·규정명 클릭 가능</p>
-  <div class="meta">기준일: 2026-05-07 · 출처: 법제처, KITECH 공식 사이트, 2025년 1분기 통합공시</div>
+  <p>외부 공개된 원문만 직링크 제공 — 비공개 규정은 정보공개 청구 필요</p>
+  <div class="meta">기준일: 2026-05-07 · 출처: 법제처, KITECH 공식, 2025년 1분기 통합공시</div>
 </header>
 
 <div class="controls">
   <div class="search-box">
     <input type="text" id="searchInput" placeholder="규정명 검색... (예: 채용, 윤리, 정관)" oninput="filterRows()">
   </div>
-  <button class="icon-btn" style="width:auto; padding:0.5rem 0.9rem;" onclick="openGuide()" title="법제처에서 HWP/PDF/DOC 저장하는 방법">💾 저장 가이드</button>
-  <span class="stat" id="stat">전체 <strong>53</strong>건</span>
+  <button class="filter-btn active" data-filter="all" onclick="setFilter(this)">전체</button>
+  <button class="filter-btn" data-filter="open" onclick="setFilter(this)">🔓 공개만</button>
+  <button class="filter-btn" data-filter="law" onclick="setFilter(this)">⚖️ 법령만</button>
+  <button class="filter-btn" onclick="openGuide()">💾 다운로드 안내</button>
+  <span class="stat" id="stat">전체 <strong id="totalCount">53</strong>건</span>
 </div>
 
 <div class="info-banner">
-  💡 <strong>이용 안내</strong>: 법령명을 클릭하면 <b>법제처(law.go.kr)</b> 또는 <b>KITECH 공식 사이트</b>로 이동합니다. HWP/PDF/DOC 다운로드는 법제처 페이지 내 <b>저장 버튼(💾)</b> 사용 — 자세한 방법은 상단 "저장 가이드" 클릭.
+  💡 <strong>이용 안내</strong>: KITECH 통합공시(2025.1Q) 기준. 외부에 원문이 공개된 규정은 <b>5개</b>이며, 나머지 내부규정은 <b>정보공개 청구</b>를 통해서만 열람 가능합니다.
+</div>
+
+<div class="legend">
+  <span class="legend-item"><span class="badge badge-law">⚖️ 법령</span> 법제처 공개 (HWP/PDF/DOC 다운 가능)</span>
+  <span class="legend-item"><span class="badge badge-open">🔓 공개</span> KITECH 사이트에 원문 공개</span>
+  <span class="legend-item"><span class="badge badge-closed">🔒 비공개</span> 정보공개 청구 필요</span>
 </div>
 
 <nav class="toc">
@@ -414,44 +257,44 @@
 </nav>
 
 <div class="empty" id="emptyState">
-  <h3 style="margin-bottom:0.5rem;">🔍 검색 결과 없음</h3>
+  <h3>🔍 검색 결과 없음</h3>
   <p>다른 검색어를 시도해보세요.</p>
 </div>
 
 <section id="s1" data-section="1">
   <h2><span class="num">1</span> 설립근거 및 상위 법령 <span class="count" data-count="6">6</span></h2>
   <table>
-    <thead><tr><th>법령명</th><th>비고</th><th class="actions">출처</th></tr></thead>
+    <thead><tr><th>법령명</th><th>비고</th><th>상태</th></tr></thead>
     <tbody>
-      <tr data-name="과학기술분야 정부출연연구기관 등의 설립·운영 및 육성에 관한 법률">
-        <td><a class="law external" href="https://www.law.go.kr/LSW/lsInfoP.do?lsId=002002&ancYnChk=0" target="_blank" rel="noopener">과학기술분야 정부출연연구기관 등의 설립·운영 및 육성에 관한 법률</a><span class="row-actions"><button class="icon-btn" onclick="copyLink(this)" data-url="https://www.law.go.kr/LSW/lsInfoP.do?lsId=002002&ancYnChk=0" title="링크 복사">📋</button></span></td>
+      <tr data-name="과학기술분야 정부출연연구기관 등의 설립·운영 및 육성에 관한 법률" data-status="law">
+        <td><a class="law external" href="https://www.law.go.kr/LSW/lsInfoP.do?lsId=002002&ancYnChk=0" target="_blank" rel="noopener">과학기술분야 정부출연연구기관 등의 설립·운영 및 육성에 관한 법률</a></td>
         <td>제8조제1항 근거 (법률 제18432호, 2021.8.17 시행)</td>
-        <td class="actions">법제처</td>
+        <td class="status"><span class="badge badge-law">⚖️ 법령</span></td>
       </tr>
-      <tr data-name="과학기술분야 정부출연연구기관 운영에 관한 규정">
-        <td><a class="law external" href="https://www.law.go.kr/LSW/admRulLsInfoP.do?admRulSeq=2100000256320" target="_blank" rel="noopener">과학기술분야 정부출연연구기관 운영에 관한 규정</a><span class="row-actions"><button class="icon-btn" onclick="copyLink(this)" data-url="https://www.law.go.kr/LSW/admRulLsInfoP.do?admRulSeq=2100000256320" title="링크 복사">📋</button></span></td>
+      <tr data-name="과학기술분야 정부출연연구기관 운영에 관한 규정" data-status="law">
+        <td><a class="law external" href="https://www.law.go.kr/LSW/admRulLsInfoP.do?admRulSeq=2100000256320" target="_blank" rel="noopener">과학기술분야 정부출연연구기관 운영에 관한 규정</a></td>
         <td>과기정통부훈령 제289호 (2025.3.4 제정)</td>
-        <td class="actions">법제처</td>
+        <td class="status"><span class="badge badge-law">⚖️ 법령</span></td>
       </tr>
-      <tr data-name="중소기업 기술혁신 촉진법">
-        <td><a class="law external" href="https://law.go.kr/LSW/lsInfoP.do?lsiSeq=192523" target="_blank" rel="noopener">중소기업 기술혁신 촉진법</a><span class="row-actions"><button class="icon-btn" onclick="copyLink(this)" data-url="https://law.go.kr/LSW/lsInfoP.do?lsiSeq=192523" title="링크 복사">📋</button></span></td>
+      <tr data-name="중소기업 기술혁신 촉진법" data-status="law">
+        <td><a class="law external" href="https://law.go.kr/LSW/lsInfoP.do?lsiSeq=192523" target="_blank" rel="noopener">중소기업 기술혁신 촉진법</a></td>
         <td>중소·중견기업 기술경쟁력 강화 근거</td>
-        <td class="actions">법제처</td>
+        <td class="status"><span class="badge badge-law">⚖️ 법령</span></td>
       </tr>
-      <tr data-name="공공기관의 정보공개에 관한 법률">
-        <td><a class="law external" href="https://www.law.go.kr/lsSc.do?menuId=1&subMenuId=15&tabMenuId=81&query=%EA%B3%B5%EA%B3%B5%EA%B8%B0%EA%B4%80%EC%9D%98+%EC%A0%95%EB%B3%B4%EA%B3%B5%EA%B0%9C%EC%97%90+%EA%B4%80%ED%95%9C+%EB%B2%95%EB%A5%A0" target="_blank" rel="noopener">공공기관의 정보공개에 관한 법률</a></td>
+      <tr data-name="공공기관의 정보공개에 관한 법률" data-status="law">
+        <td><a class="law external" href="https://www.law.go.kr/lsSc.do?menuId=1&query=%EA%B3%B5%EA%B3%B5%EA%B8%B0%EA%B4%80%EC%9D%98+%EC%A0%95%EB%B3%B4%EA%B3%B5%EA%B0%9C%EC%97%90+%EA%B4%80%ED%95%9C+%EB%B2%95%EB%A5%A0" target="_blank" rel="noopener">공공기관의 정보공개에 관한 법률</a></td>
         <td>제9조 비공개대상 정보</td>
-        <td class="actions">법제처</td>
+        <td class="status"><span class="badge badge-law">⚖️ 법령</span></td>
       </tr>
-      <tr data-name="개인정보 보호법">
-        <td><a class="law external" href="https://www.law.go.kr/lsSc.do?menuId=1&subMenuId=15&tabMenuId=81&query=%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4+%EB%B3%B4%ED%98%B8%EB%B2%95" target="_blank" rel="noopener">개인정보 보호법</a></td>
+      <tr data-name="개인정보 보호법" data-status="law">
+        <td><a class="law external" href="https://www.law.go.kr/lsSc.do?menuId=1&query=%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4+%EB%B3%B4%ED%98%B8%EB%B2%95" target="_blank" rel="noopener">개인정보 보호법</a></td>
         <td>개인정보처리방침 근거</td>
-        <td class="actions">법제처</td>
+        <td class="status"><span class="badge badge-law">⚖️ 법령</span></td>
       </tr>
-      <tr data-name="연구실 안전환경 조성에 관한 법률">
-        <td><a class="law external" href="https://www.law.go.kr/lsSc.do?menuId=1&subMenuId=15&tabMenuId=81&query=%EC%97%B0%EA%B5%AC%EC%8B%A4+%EC%95%88%EC%A0%84%ED%99%98%EA%B2%BD+%EC%A1%B0%EC%84%B1%EC%97%90+%EA%B4%80%ED%95%9C+%EB%B2%95%EB%A5%A0" target="_blank" rel="noopener">연구실 안전환경 조성에 관한 법률</a></td>
+      <tr data-name="연구실 안전환경 조성에 관한 법률" data-status="law">
+        <td><a class="law external" href="https://www.law.go.kr/lsSc.do?menuId=1&query=%EC%97%B0%EA%B5%AC%EC%8B%A4+%EC%95%88%EC%A0%84%ED%99%98%EA%B2%BD+%EC%A1%B0%EC%84%B1%EC%97%90+%EA%B4%80%ED%95%9C+%EB%B2%95%EB%A5%A0" target="_blank" rel="noopener">연구실 안전환경 조성에 관한 법률</a></td>
         <td>연구실 안전관리 근거</td>
-        <td class="actions">법제처</td>
+        <td class="status"><span class="badge badge-law">⚖️ 법령</span></td>
       </tr>
     </tbody>
   </table>
@@ -460,14 +303,18 @@
 <section id="s2" data-section="2">
   <h2><span class="num">2</span> 정관 및 조직·직무 규정 <span class="count" data-count="6">6</span></h2>
   <table>
-    <thead><tr><th>규정명</th><th>최신 개정</th><th>비고</th></tr></thead>
+    <thead><tr><th>규정명</th><th>최신 개정</th><th>상태</th></tr></thead>
     <tbody>
-      <tr data-name="한국생산기술연구원 정관"><td><a class="internal external" href="https://www.kitech.re.kr/search/?q=%EC%A0%95%EA%B4%80" target="_blank" rel="noopener">한국생산기술연구원 정관</a></td><td class="date">2024.1.31</td><td>최상위 내부규정</td></tr>
-      <tr data-name="직제규정"><td><a class="internal external" href="https://www.kitech.re.kr/search/?q=%EC%A7%81%EC%A0%9C%EA%B7%9C%EC%A0%95" target="_blank" rel="noopener">직제규정</a></td><td class="date">2025.2.25</td><td>-</td></tr>
-      <tr data-name="직무분장규정"><td><a class="internal external" href="https://www.kitech.re.kr/search/?q=%EC%A7%81%EB%AC%B4%EB%B6%84%EC%9E%A5%EA%B7%9C%EC%A0%95" target="_blank" rel="noopener">직무분장규정</a></td><td class="date">2025.2.25</td><td>-</td></tr>
-      <tr data-name="직무권한위임전결규정"><td><a class="internal external" href="https://www.kitech.re.kr/search/?q=%EC%A7%81%EB%AC%B4%EA%B6%8C%ED%95%9C%EC%9C%84%EC%9E%84%EC%A0%84%EA%B2%B0%EA%B7%9C%EC%A0%95" target="_blank" rel="noopener">직무권한위임전결규정</a></td><td class="date">2025.2.25</td><td>-</td></tr>
-      <tr data-name="지역본부위원회 운영요령"><td><a class="internal external" href="https://www.kitech.re.kr/search/?q=%EC%A7%80%EC%97%AD%EB%B3%B8%EB%B6%80%EC%9C%84%EC%9B%90%ED%9A%8C" target="_blank" rel="noopener">지역본부위원회 운영요령</a></td><td class="date">2012.6.19</td><td>-</td></tr>
-      <tr data-name="해외사무소운영규정"><td><a class="internal external" href="https://www.kitech.re.kr/search/?q=%ED%95%B4%EC%99%B8%EC%82%AC%EB%AC%B4%EC%86%8C" target="_blank" rel="noopener">해외사무소운영규정</a></td><td class="date">2020.3.23</td><td>미국(산호세)·중국(청도)·베트남</td></tr>
+      <tr data-name="한국생산기술연구원 정관" data-status="open">
+        <td><a class="external" href="https://law.go.kr/LSW/schlPubRulInfoP.do?schlPubRulSeq=2200000090123" target="_blank" rel="noopener">한국생산기술연구원 정관</a></td>
+        <td class="date">2024.1.31</td>
+        <td class="status"><span class="badge badge-law">⚖️ 법제처</span></td>
+      </tr>
+      <tr data-name="직제규정" data-status="closed"><td class="closed-name">직제규정</td><td class="date">2025.2.25</td><td class="status"><span class="badge badge-closed">🔒 비공개</span></td></tr>
+      <tr data-name="직무분장규정" data-status="closed"><td class="closed-name">직무분장규정</td><td class="date">2025.2.25</td><td class="status"><span class="badge badge-closed">🔒 비공개</span></td></tr>
+      <tr data-name="직무권한위임전결규정" data-status="closed"><td class="closed-name">직무권한위임전결규정</td><td class="date">2025.2.25</td><td class="status"><span class="badge badge-closed">🔒 비공개</span></td></tr>
+      <tr data-name="지역본부위원회 운영요령" data-status="closed"><td class="closed-name">지역본부위원회 운영요령</td><td class="date">2012.6.19</td><td class="status"><span class="badge badge-closed">🔒 비공개</span></td></tr>
+      <tr data-name="해외사무소운영규정" data-status="closed"><td class="closed-name">해외사무소운영규정</td><td class="date">2020.3.23</td><td class="status"><span class="badge badge-closed">🔒 비공개</span></td></tr>
     </tbody>
   </table>
 </section>
@@ -475,15 +322,19 @@
 <section id="s3" data-section="3">
   <h2><span class="num">3</span> 인사 규정 <span class="count" data-count="7">7</span></h2>
   <table>
-    <thead><tr><th>규정명</th><th>최신 개정</th></tr></thead>
+    <thead><tr><th>규정명</th><th>최신 개정</th><th>상태</th></tr></thead>
     <tbody>
-      <tr data-name="채용규정"><td><a class="internal external" href="https://www.kitech.re.kr/search/?q=%EC%B1%84%EC%9A%A9%EA%B7%9C%EC%A0%95" target="_blank" rel="noopener">채용규정</a></td><td class="date">2025.2.25</td></tr>
-      <tr data-name="직원평가규정"><td><a class="internal external" href="https://www.kitech.re.kr/search/?q=%EC%A7%81%EC%9B%90%ED%8F%89%EA%B0%80%EA%B7%9C%EC%A0%95" target="_blank" rel="noopener">직원평가규정</a></td><td class="date">2023.9.25</td></tr>
-      <tr data-name="징계규정"><td><a class="internal external" href="https://www.kitech.re.kr/search/?q=%EC%A7%95%EA%B3%84%EA%B7%9C%EC%A0%95" target="_blank" rel="noopener">징계규정</a></td><td class="date">2023.11.14</td></tr>
-      <tr data-name="취업규칙"><td><a class="internal external" href="https://www.kitech.re.kr/search/?q=%EC%B7%A8%EC%97%85%EA%B7%9C%EC%B9%99" target="_blank" rel="noopener">취업규칙</a></td><td class="date">-</td></tr>
-      <tr data-name="파견근로자채용 및 관리지침"><td><a class="internal external" href="https://www.kitech.re.kr/search/?q=%ED%8C%8C%EA%B2%AC%EA%B7%BC%EB%A1%9C%EC%9E%90" target="_blank" rel="noopener">파견근로자채용 및 관리지침</a></td><td class="date">2018.12.26</td></tr>
-      <tr data-name="직장내괴롭힘 예방 및 대응 요령"><td><a class="internal external" href="https://www.kitech.re.kr/search/?q=%EC%A7%81%EC%9E%A5%EB%82%B4%EA%B4%B4%EB%A1%AD%ED%9E%98" target="_blank" rel="noopener">직장내괴롭힘 예방 및 대응 요령</a></td><td class="date">2021.9.28</td></tr>
-      <tr data-name="학생연구원 지원규정"><td><a class="internal external" href="https://www.kitech.re.kr/school/home/data/notice/11-0600_%ED%95%99%EC%83%9D%EC%97%B0%EA%B5%AC%EC%9B%90%20%EC%A7%80%EC%9B%90%EA%B7%9C%EC%A0%95_4%EC%B0%A8%EA%B0%9C%EC%A0%95_20241227.pdf" target="_blank" rel="noopener">학생연구원 지원규정 (PDF 직링크)</a></td><td class="date">2024.12.27 (4차 개정)</td></tr>
+      <tr data-name="채용규정" data-status="closed"><td class="closed-name">채용규정</td><td class="date">2025.2.25</td><td class="status"><span class="badge badge-closed">🔒 비공개</span></td></tr>
+      <tr data-name="직원평가규정" data-status="closed"><td class="closed-name">직원평가규정</td><td class="date">2023.9.25</td><td class="status"><span class="badge badge-closed">🔒 비공개</span></td></tr>
+      <tr data-name="징계규정" data-status="closed"><td class="closed-name">징계규정</td><td class="date">2023.11.14</td><td class="status"><span class="badge badge-closed">🔒 비공개</span></td></tr>
+      <tr data-name="취업규칙" data-status="closed"><td class="closed-name">취업규칙</td><td class="date">-</td><td class="status"><span class="badge badge-closed">🔒 비공개</span></td></tr>
+      <tr data-name="파견근로자채용 및 관리지침" data-status="closed"><td class="closed-name">파견근로자채용 및 관리지침</td><td class="date">2018.12.26</td><td class="status"><span class="badge badge-closed">🔒 비공개</span></td></tr>
+      <tr data-name="직장내괴롭힘 예방 및 대응 요령" data-status="closed"><td class="closed-name">직장내괴롭힘 예방 및 대응 요령</td><td class="date">2021.9.28</td><td class="status"><span class="badge badge-closed">🔒 비공개</span></td></tr>
+      <tr data-name="학생연구원 지원규정" data-status="open">
+        <td><a class="external" href="https://www.kitech.re.kr/school/home/data/notice/11-0600_%ED%95%99%EC%83%9D%EC%97%B0%EA%B5%AC%EC%9B%90%20%EC%A7%80%EC%9B%90%EA%B7%9C%EC%A0%95_4%EC%B0%A8%EA%B0%9C%EC%A0%95_20241227.pdf" target="_blank" rel="noopener">학생연구원 지원규정 (PDF)</a></td>
+        <td class="date">2024.12.27 (4차 개정)</td>
+        <td class="status"><span class="badge badge-open">🔓 공개</span></td>
+      </tr>
     </tbody>
   </table>
 </section>
@@ -491,21 +342,25 @@
 <section id="s4" data-section="4">
   <h2><span class="num">4</span> 윤리·청렴·감사 규정 <span class="count" data-count="13">13</span></h2>
   <table>
-    <thead><tr><th>규정명</th><th>최신 개정</th></tr></thead>
+    <thead><tr><th>규정명</th><th>최신 개정</th><th>상태</th></tr></thead>
     <tbody>
-      <tr data-name="임직원행동강령"><td><a class="internal external" href="https://www.kitech.re.kr/search/?q=%EC%9E%84%EC%A7%81%EC%9B%90%ED%96%89%EB%8F%99%EA%B0%95%EB%A0%B9" target="_blank" rel="noopener">임직원행동강령</a></td><td class="date">2024.12.27</td></tr>
-      <tr data-name="연구윤리준수규정"><td><a class="internal external" href="https://www.kitech.re.kr/search/?q=%EC%97%B0%EA%B5%AC%EC%9C%A4%EB%A6%AC%EC%A4%80%EC%88%98%EA%B7%9C%EC%A0%95" target="_blank" rel="noopener">연구윤리준수규정</a></td><td class="date">2022.3.29</td></tr>
-      <tr data-name="연구윤리 진실성 확보 운영요령"><td><a class="internal external" href="https://www.kitech.re.kr/search/?q=%EC%97%B0%EA%B5%AC%EC%9C%A4%EB%A6%AC+%EC%A7%84%EC%8B%A4%EC%84%B1" target="_blank" rel="noopener">연구윤리 진실성 확보 운영요령</a></td><td class="date">2022.9.27</td></tr>
-      <tr data-name="인권경영 이행규정"><td><a class="internal external" href="https://www.kitech.re.kr/open/page3-5-2.php?idx=5" target="_blank" rel="noopener">인권경영 이행규정</a></td><td class="date">2019.10.28</td></tr>
-      <tr data-name="감사인 윤리행동강령"><td><a class="internal external" href="https://www.kitech.re.kr/search/?q=%EA%B0%90%EC%82%AC%EC%9D%B8+%EC%9C%A4%EB%A6%AC%ED%96%89%EB%8F%99%EA%B0%95%EB%A0%B9" target="_blank" rel="noopener">감사인 윤리행동강령</a></td><td class="date">2023.2.20</td></tr>
-      <tr data-name="공익신고 처리 및 신고자 보호 운영지침"><td><a class="internal external" href="https://www.kitech.re.kr/search/?q=%EA%B3%B5%EC%9D%B5%EC%8B%A0%EA%B3%A0" target="_blank" rel="noopener">공익신고 처리 및 신고자 보호 운영지침</a></td><td class="date">2024.12.27</td></tr>
-      <tr data-name="부패신고 처리 및 신고자 보호 운영지침"><td><a class="internal external" href="https://www.kitech.re.kr/search/?q=%EB%B6%80%ED%8C%A8%EC%8B%A0%EA%B3%A0" target="_blank" rel="noopener">부패신고 처리 및 신고자 보호 운영지침</a></td><td class="date">2021.9.28</td></tr>
-      <tr data-name="부정청탁 및 금품등 수수의 신고사무 처리지침"><td><a class="internal external" href="https://www.kitech.re.kr/search/?q=%EB%B6%80%EC%A0%95%EC%B2%AD%ED%83%81" target="_blank" rel="noopener">부정청탁 및 금품등 수수의 신고사무 처리지침</a></td><td class="date">2018.12.26</td></tr>
-      <tr data-name="공직자의 이해충돌 방지제도 운영요령"><td><a class="internal external" href="https://www.kitech.re.kr/search/?q=%EC%9D%B4%ED%95%B4%EC%B6%A9%EB%8F%8C+%EB%B0%A9%EC%A7%80" target="_blank" rel="noopener">공직자의 이해충돌 방지제도 운영요령</a></td><td class="date">2023.11.14</td></tr>
-      <tr data-name="자체감사 사무처리 규정"><td><a class="internal external" href="https://www.kitech.re.kr/search/?q=%EC%9E%90%EC%B2%B4%EA%B0%90%EC%82%AC" target="_blank" rel="noopener">자체감사 사무처리 규정</a></td><td class="date">2023.2.20</td></tr>
-      <tr data-name="청렴시민감사관 운영요령"><td><a class="internal external" href="https://www.kitech.re.kr/search/?q=%EC%B2%AD%EB%A0%B4%EC%8B%9C%EB%AF%BC%EA%B0%90%EC%82%AC%EA%B4%80" target="_blank" rel="noopener">청렴시민감사관 운영요령</a></td><td class="date">2023.2.20</td></tr>
-      <tr data-name="내부통제 운영지침"><td><a class="internal external" href="https://www.kitech.re.kr/search/?q=%EB%82%B4%EB%B6%80%ED%86%B5%EC%A0%9C" target="_blank" rel="noopener">내부통제 운영지침</a></td><td class="date">2024.12.27</td></tr>
-      <tr data-name="성희롱 성폭력 예방지침"><td><a class="internal external" href="https://www.kitech.re.kr/search/?q=%EC%84%B1%ED%9D%AC%EB%A1%B1+%EC%84%B1%ED%8F%AD%EB%A0%A5" target="_blank" rel="noopener">성희롱·성폭력 예방지침</a></td><td class="date">2023.11.14</td></tr>
+      <tr data-name="임직원행동강령" data-status="closed"><td class="closed-name">임직원행동강령</td><td class="date">2024.12.27</td><td class="status"><span class="badge badge-closed">🔒 비공개</span></td></tr>
+      <tr data-name="연구윤리준수규정" data-status="closed"><td class="closed-name">연구윤리준수규정</td><td class="date">2022.3.29</td><td class="status"><span class="badge badge-closed">🔒 비공개</span></td></tr>
+      <tr data-name="연구윤리 진실성 확보 운영요령" data-status="closed"><td class="closed-name">연구윤리 진실성 확보 운영요령</td><td class="date">2022.9.27</td><td class="status"><span class="badge badge-closed">🔒 비공개</span></td></tr>
+      <tr data-name="인권경영 이행규정" data-status="open">
+        <td><a class="external" href="https://www.kitech.re.kr/open/page3-5-2.php?idx=5" target="_blank" rel="noopener">인권경영 이행규정</a></td>
+        <td class="date">2019.10.28</td>
+        <td class="status"><span class="badge badge-open">🔓 공개</span></td>
+      </tr>
+      <tr data-name="감사인 윤리행동강령" data-status="closed"><td class="closed-name">감사인 윤리행동강령</td><td class="date">2023.2.20</td><td class="status"><span class="badge badge-closed">🔒 비공개</span></td></tr>
+      <tr data-name="공익신고 처리 및 신고자 보호 운영지침" data-status="closed"><td class="closed-name">공익신고 처리 및 신고자 보호 운영지침</td><td class="date">2024.12.27</td><td class="status"><span class="badge badge-closed">🔒 비공개</span></td></tr>
+      <tr data-name="부패신고 처리 및 신고자 보호 운영지침" data-status="closed"><td class="closed-name">부패신고 처리 및 신고자 보호 운영지침</td><td class="date">2021.9.28</td><td class="status"><span class="badge badge-closed">🔒 비공개</span></td></tr>
+      <tr data-name="부정청탁 및 금품등 수수의 신고사무 처리지침" data-status="closed"><td class="closed-name">부정청탁 및 금품등 수수의 신고사무 처리지침</td><td class="date">2018.12.26</td><td class="status"><span class="badge badge-closed">🔒 비공개</span></td></tr>
+      <tr data-name="공직자의 이해충돌 방지제도 운영요령" data-status="closed"><td class="closed-name">공직자의 이해충돌 방지제도 운영요령</td><td class="date">2023.11.14</td><td class="status"><span class="badge badge-closed">🔒 비공개</span></td></tr>
+      <tr data-name="자체감사 사무처리 규정" data-status="closed"><td class="closed-name">자체감사 사무처리 규정</td><td class="date">2023.2.20</td><td class="status"><span class="badge badge-closed">🔒 비공개</span></td></tr>
+      <tr data-name="청렴시민감사관 운영요령" data-status="closed"><td class="closed-name">청렴시민감사관 운영요령</td><td class="date">2023.2.20</td><td class="status"><span class="badge badge-closed">🔒 비공개</span></td></tr>
+      <tr data-name="내부통제 운영지침" data-status="closed"><td class="closed-name">내부통제 운영지침</td><td class="date">2024.12.27</td><td class="status"><span class="badge badge-closed">🔒 비공개</span></td></tr>
+      <tr data-name="성희롱 성폭력 예방지침" data-status="closed"><td class="closed-name">성희롱·성폭력 예방지침</td><td class="date">2023.11.14</td><td class="status"><span class="badge badge-closed">🔒 비공개</span></td></tr>
     </tbody>
   </table>
 </section>
@@ -513,15 +368,15 @@
 <section id="s5" data-section="5">
   <h2><span class="num">5</span> 연구개발 규정 <span class="count" data-count="7">7</span></h2>
   <table>
-    <thead><tr><th>규정명</th><th>최신 개정</th></tr></thead>
+    <thead><tr><th>규정명</th><th>최신 개정</th><th>상태</th></tr></thead>
     <tbody>
-      <tr data-name="기본사업 운영요령"><td><a class="internal external" href="https://www.kitech.re.kr/search/?q=%EA%B8%B0%EB%B3%B8%EC%82%AC%EC%97%85+%EC%9A%B4%EC%98%81%EC%9A%94%EB%A0%B9" target="_blank" rel="noopener">기본사업 운영요령</a></td><td class="date">2025.2.25</td></tr>
-      <tr data-name="연구업무규정"><td><a class="internal external" href="https://www.kitech.re.kr/search/?q=%EC%97%B0%EA%B5%AC%EC%97%85%EB%AC%B4%EA%B7%9C%EC%A0%95" target="_blank" rel="noopener">연구업무규정</a></td><td class="date">2025.2.25</td></tr>
-      <tr data-name="연구총괄심의위원회 운영요령"><td><a class="internal external" href="https://www.kitech.re.kr/search/?q=%EC%97%B0%EA%B5%AC%EC%B4%9D%EA%B4%84%EC%8B%AC%EC%9D%98%EC%9C%84%EC%9B%90%ED%9A%8C" target="_blank" rel="noopener">연구총괄심의위원회 운영요령</a></td><td class="date">2021.9.28</td></tr>
-      <tr data-name="국제협력사업 운영지침"><td><a class="internal external" href="https://www.kitech.re.kr/search/?q=%EA%B5%AD%EC%A0%9C%ED%98%91%EB%A0%A5%EC%82%AC%EC%97%85" target="_blank" rel="noopener">국제협력사업 운영지침</a></td><td class="date">2021.9.28</td></tr>
-      <tr data-name="위탁연구사업 관리요령"><td><a class="internal external" href="https://www.kitech.re.kr/search/?q=%EC%9C%84%ED%83%81%EC%97%B0%EA%B5%AC%EC%82%AC%EC%97%85" target="_blank" rel="noopener">위탁연구사업 관리요령</a></td><td class="date">2022.9.27</td></tr>
-      <tr data-name="생명윤리위원회 운영요령"><td><a class="internal external" href="https://www.kitech.re.kr/search/?q=%EC%83%9D%EB%AA%85%EC%9C%A4%EB%A6%AC%EC%9C%84%EC%9B%90%ED%9A%8C" target="_blank" rel="noopener">생명윤리위원회 운영요령</a></td><td class="date">2021.10.26</td></tr>
-      <tr data-name="연구실안전 보건관리규정"><td><a class="internal external" href="https://www.kitech.re.kr/search/?q=%EC%97%B0%EA%B5%AC%EC%8B%A4%EC%95%88%EC%A0%84" target="_blank" rel="noopener">연구실안전·보건관리규정</a></td><td class="date">2024.8.21</td></tr>
+      <tr data-name="기본사업 운영요령" data-status="closed"><td class="closed-name">기본사업 운영요령</td><td class="date">2025.2.25</td><td class="status"><span class="badge badge-closed">🔒 비공개</span></td></tr>
+      <tr data-name="연구업무규정" data-status="closed"><td class="closed-name">연구업무규정</td><td class="date">2025.2.25</td><td class="status"><span class="badge badge-closed">🔒 비공개</span></td></tr>
+      <tr data-name="연구총괄심의위원회 운영요령" data-status="closed"><td class="closed-name">연구총괄심의위원회 운영요령</td><td class="date">2021.9.28</td><td class="status"><span class="badge badge-closed">🔒 비공개</span></td></tr>
+      <tr data-name="국제협력사업 운영지침" data-status="closed"><td class="closed-name">국제협력사업 운영지침</td><td class="date">2021.9.28</td><td class="status"><span class="badge badge-closed">🔒 비공개</span></td></tr>
+      <tr data-name="위탁연구사업 관리요령" data-status="closed"><td class="closed-name">위탁연구사업 관리요령</td><td class="date">2022.9.27</td><td class="status"><span class="badge badge-closed">🔒 비공개</span></td></tr>
+      <tr data-name="생명윤리위원회 운영요령" data-status="closed"><td class="closed-name">생명윤리위원회 운영요령</td><td class="date">2021.10.26</td><td class="status"><span class="badge badge-closed">🔒 비공개</span></td></tr>
+      <tr data-name="연구실안전 보건관리규정" data-status="closed"><td class="closed-name">연구실안전·보건관리규정</td><td class="date">2024.8.21</td><td class="status"><span class="badge badge-closed">🔒 비공개</span></td></tr>
     </tbody>
   </table>
 </section>
@@ -529,11 +384,11 @@
 <section id="s6" data-section="6">
   <h2><span class="num">6</span> 기술이전·사업화 규정 <span class="count" data-count="3">3</span></h2>
   <table>
-    <thead><tr><th>규정명</th><th>최신 개정</th></tr></thead>
+    <thead><tr><th>규정명</th><th>최신 개정</th><th>상태</th></tr></thead>
     <tbody>
-      <tr data-name="기술이전업무 규정"><td><a class="internal external" href="https://www.kitech.re.kr/search/?q=%EA%B8%B0%EC%88%A0%EC%9D%B4%EC%A0%84%EC%97%85%EB%AC%B4" target="_blank" rel="noopener">기술이전업무 규정</a></td><td class="date">2019.1.25</td></tr>
-      <tr data-name="기술실시보상금 지급요령"><td><a class="internal external" href="https://www.kitech.re.kr/search/?q=%EA%B8%B0%EC%88%A0%EC%8B%A4%EC%8B%9C%EB%B3%B4%EC%83%81%EA%B8%88" target="_blank" rel="noopener">기술실시보상금 지급요령</a></td><td class="date">2023.8.29</td></tr>
-      <tr data-name="기술자문 관리규정"><td><a class="internal external" href="https://www.kitech.re.kr/search/?q=%EA%B8%B0%EC%88%A0%EC%9E%90%EB%AC%B8" target="_blank" rel="noopener">기술자문 관리규정</a></td><td class="date">2018.12.26</td></tr>
+      <tr data-name="기술이전업무 규정" data-status="closed"><td class="closed-name">기술이전업무 규정</td><td class="date">2019.1.25</td><td class="status"><span class="badge badge-closed">🔒 비공개</span></td></tr>
+      <tr data-name="기술실시보상금 지급요령" data-status="closed"><td class="closed-name">기술실시보상금 지급요령</td><td class="date">2023.8.29</td><td class="status"><span class="badge badge-closed">🔒 비공개</span></td></tr>
+      <tr data-name="기술자문 관리규정" data-status="closed"><td class="closed-name">기술자문 관리규정</td><td class="date">2018.12.26</td><td class="status"><span class="badge badge-closed">🔒 비공개</span></td></tr>
     </tbody>
   </table>
 </section>
@@ -541,12 +396,12 @@
 <section id="s7" data-section="7">
   <h2><span class="num">7</span> 재무·회계·계약 규정 <span class="count" data-count="4">4</span></h2>
   <table>
-    <thead><tr><th>규정명</th><th>최신 개정</th><th>비고</th></tr></thead>
+    <thead><tr><th>규정명</th><th>최신 개정</th><th>상태</th></tr></thead>
     <tbody>
-      <tr data-name="기금관리규정"><td><a class="internal external" href="https://www.kitech.re.kr/search/?q=%EA%B8%B0%EA%B8%88%EA%B4%80%EB%A6%AC%EA%B7%9C%EC%A0%95" target="_blank" rel="noopener">기금관리규정</a></td><td class="date">1998.12.10</td><td>-</td></tr>
-      <tr data-name="유형자산관리규정"><td><a class="internal external" href="https://www.kitech.re.kr/search/?q=%EC%9C%A0%ED%98%95%EC%9E%90%EC%82%B0" target="_blank" rel="noopener">유형자산관리규정</a></td><td class="date">2023.11.14</td><td>-</td></tr>
-      <tr data-name="전도자금취급요령"><td><a class="internal external" href="https://www.kitech.re.kr/search/?q=%EC%A0%84%EB%8F%84%EC%9E%90%EA%B8%88" target="_blank" rel="noopener">전도자금취급요령</a></td><td class="date">2018.12.26</td><td>-</td></tr>
-      <tr data-name="전자조달시스템 계약업무요령"><td><a class="internal external" href="https://www.kitech.re.kr/search/?q=%EC%A0%84%EC%9E%90%EC%A1%B0%EB%8B%AC%EC%8B%9C%EC%8A%A4%ED%85%9C" target="_blank" rel="noopener">전자조달시스템을 이용한 계약업무요령</a></td><td class="date">2019.11.25</td><td><a class="external" href="https://www.g2b.go.kr" target="_blank" rel="noopener">나라장터</a> 사용</td></tr>
+      <tr data-name="기금관리규정" data-status="closed"><td class="closed-name">기금관리규정</td><td class="date">1998.12.10</td><td class="status"><span class="badge badge-closed">🔒 비공개</span></td></tr>
+      <tr data-name="유형자산관리규정" data-status="closed"><td class="closed-name">유형자산관리규정</td><td class="date">2023.11.14</td><td class="status"><span class="badge badge-closed">🔒 비공개</span></td></tr>
+      <tr data-name="전도자금취급요령" data-status="closed"><td class="closed-name">전도자금취급요령</td><td class="date">2018.12.26</td><td class="status"><span class="badge badge-closed">🔒 비공개</span></td></tr>
+      <tr data-name="전자조달시스템 계약업무요령" data-status="closed"><td class="closed-name">전자조달시스템을 이용한 계약업무요령</td><td class="date">2019.11.25</td><td class="status"><span class="badge badge-closed">🔒 비공개</span></td></tr>
     </tbody>
   </table>
 </section>
@@ -554,17 +409,29 @@
 <section id="s8" data-section="8">
   <h2><span class="num">8</span> 보안·정보·총무 규정 <span class="count" data-count="9">9</span></h2>
   <table>
-    <thead><tr><th>규정명</th><th>비고</th></tr></thead>
+    <thead><tr><th>규정명</th><th>비고</th><th>상태</th></tr></thead>
     <tbody>
-      <tr data-name="보안경영선언문"><td><a class="internal external" href="https://www.kitech.re.kr/introduce/securitypolicy" target="_blank" rel="noopener">보안경영선언문</a></td><td>2024.1.1</td></tr>
-      <tr data-name="전산 네트워크 보안지침"><td><a class="internal external" href="https://www.kitech.re.kr/search/?q=%EC%A0%84%EC%82%B0+%EB%B3%B4%EC%95%88" target="_blank" rel="noopener">전산 네트워크 보안지침</a></td><td>-</td></tr>
-      <tr data-name="개인정보처리방침"><td><a class="internal external" href="https://journal.kitech.re.kr/info/privacyPolicy_250630.php" target="_blank" rel="noopener">개인정보처리방침</a></td><td>journal.kitech.re.kr 게시</td></tr>
-      <tr data-name="공용시설물 운영규정"><td><a class="internal external" href="https://www.kitech.re.kr/search/?q=%EA%B3%B5%EC%9A%A9%EC%8B%9C%EC%84%A4%EB%AC%BC" target="_blank" rel="noopener">공용시설물 운영규정</a></td><td>2022.1.25</td></tr>
-      <tr data-name="기숙사 운영요령"><td><a class="internal external" href="https://www.kitech.re.kr/search/?q=%EA%B8%B0%EC%88%99%EC%82%AC" target="_blank" rel="noopener">기숙사 운영요령</a></td><td>2022.7.25</td></tr>
-      <tr data-name="차량관리규정"><td><a class="internal external" href="https://www.kitech.re.kr/search/?q=%EC%B0%A8%EB%9F%89%EA%B4%80%EB%A6%AC" target="_blank" rel="noopener">차량관리규정</a></td><td>2022.7.25</td></tr>
-      <tr data-name="대외활동 관리요령"><td><a class="internal external" href="https://www.kitech.re.kr/search/?q=%EB%8C%80%EC%99%B8%ED%99%9C%EB%8F%99" target="_blank" rel="noopener">대외활동 관리요령</a></td><td>2023.9.25</td></tr>
-      <tr data-name="제안운영규정"><td><a class="internal external" href="https://www.kitech.re.kr/search/?q=%EC%A0%9C%EC%95%88%EC%9A%B4%EC%98%81" target="_blank" rel="noopener">제안운영규정</a></td><td>2017.5.29</td></tr>
-      <tr data-name="학위과정수학요령"><td><a class="internal external" href="https://www.kitech.re.kr/school/home/?mode=ust2" target="_blank" rel="noopener">학위과정수학요령</a></td><td>KITECH School</td></tr>
+      <tr data-name="보안경영선언문" data-status="open">
+        <td><a class="external" href="https://www.kitech.re.kr/introduce/securitypolicy" target="_blank" rel="noopener">보안경영선언문</a></td>
+        <td class="date">2024.1.1</td>
+        <td class="status"><span class="badge badge-open">🔓 공개</span></td>
+      </tr>
+      <tr data-name="전산 네트워크 보안지침" data-status="closed"><td class="closed-name">전산 네트워크 보안지침</td><td>과기부 정보보안 요청으로 원문 비공개</td><td class="status"><span class="badge badge-closed">🔒 비공개</span></td></tr>
+      <tr data-name="개인정보처리방침" data-status="open">
+        <td><a class="external" href="https://journal.kitech.re.kr/info/privacyPolicy_250630.php" target="_blank" rel="noopener">개인정보처리방침</a></td>
+        <td>journal.kitech.re.kr 게시</td>
+        <td class="status"><span class="badge badge-open">🔓 공개</span></td>
+      </tr>
+      <tr data-name="공용시설물 운영규정" data-status="closed"><td class="closed-name">공용시설물 운영규정</td><td>2022.1.25</td><td class="status"><span class="badge badge-closed">🔒 비공개</span></td></tr>
+      <tr data-name="기숙사 운영요령" data-status="closed"><td class="closed-name">기숙사 운영요령</td><td>2022.7.25</td><td class="status"><span class="badge badge-closed">🔒 비공개</span></td></tr>
+      <tr data-name="차량관리규정" data-status="closed"><td class="closed-name">차량관리규정</td><td>2022.7.25</td><td class="status"><span class="badge badge-closed">🔒 비공개</span></td></tr>
+      <tr data-name="대외활동 관리요령" data-status="closed"><td class="closed-name">대외활동 관리요령</td><td>2023.9.25</td><td class="status"><span class="badge badge-closed">🔒 비공개</span></td></tr>
+      <tr data-name="제안운영규정" data-status="closed"><td class="closed-name">제안운영규정</td><td>2017.5.29</td><td class="status"><span class="badge badge-closed">🔒 비공개</span></td></tr>
+      <tr data-name="학위과정수학요령" data-status="open">
+        <td><a class="external" href="https://www.kitech.re.kr/school/home/?mode=ust2" target="_blank" rel="noopener">학위과정수학요령</a></td>
+        <td>KITECH School 페이지</td>
+        <td class="status"><span class="badge badge-open">🔓 공개</span></td>
+      </tr>
     </tbody>
   </table>
 </section>
@@ -573,43 +440,43 @@
   <h3>📚 주요 출처</h3>
   <ul>
     <li>🏠 <a class="external" href="https://www.kitech.re.kr" target="_blank" rel="noopener">KITECH 공식 사이트</a></li>
-    <li>📂 <a class="external" href="https://www.kitech.re.kr/disclosure/system" target="_blank" rel="noopener">정보공개 제도 안내</a></li>
+    <li>📂 <a class="external" href="https://www.kitech.re.kr/disclosure/system" target="_blank" rel="noopener">정보공개 제도 안내</a> — 비공개 규정 청구 창구</li>
     <li>📊 <a class="external" href="https://www.kitech.re.kr/board/preinfo" target="_blank" rel="noopener">사전정보공표 (56개 항목)</a></li>
-    <li>📄 <a class="external" href="https://www.kitech.re.kr/images/dummy/2025%EB%85%84%201%EB%B6%84%EA%B8%B0%20%ED%95%9C%EA%B5%AD%EC%83%9D%EC%82%B0%EA%B8%B0%EC%88%A0%EC%97%B0%EA%B5%AC%EC%9B%90%20%ED%86%B5%ED%95%A9%EA%B3%B5%EC%8B%9C.pdf" target="_blank" rel="noopener">2025년 1분기 통합공시 PDF (전체 규정 목록)</a></li>
+    <li>📄 <a class="external" href="https://www.kitech.re.kr/open/page5.php" target="_blank" rel="noopener">경영공시 (통합공시 PDF 게시)</a></li>
     <li>⚖️ <a class="external" href="https://www.law.go.kr" target="_blank" rel="noopener">국가법령정보센터 (법제처)</a></li>
-    <li>🏛️ <a class="external" href="https://onest.re.kr/mngg/info/portalMngInfoList.do" target="_blank" rel="noopener">알리오 (공공기관 경영정보)</a></li>
-    <li>📚 <a class="external" href="https://encykorea.aks.ac.kr/Article/E0027514" target="_blank" rel="noopener">한국민족문화대백과 - 한국생산기술연구원</a></li>
+    <li>🏛️ <a class="external" href="https://www.alio.go.kr/" target="_blank" rel="noopener">알리오 (공공기관 경영정보)</a></li>
   </ul>
 </section>
 
 <footer>
-  <p>전체 규정 원문은 KITECH 통합공시 PDF 또는 정보공개 청구로 확보 가능합니다.</p>
+  <p><strong>공개 정책</strong>: KITECH 통합공시(2025.1Q)에 명시된 바, "정보보안 규정 등은 리스트에만 포함하며 원문은 비공개 처리".</p>
   <p style="margin-top: 0.5rem;">데이터 기준일: 2026-05-07 · <a href="https://github.com/seunghan91/kitech-regulations" target="_blank">GitHub Repo ↗</a></p>
 </footer>
 
 </div>
 
-<!-- 저장 가이드 모달 -->
+<!-- 다운로드 안내 모달 -->
 <div class="modal-backdrop" id="guideModal" onclick="if(event.target===this)closeGuide()">
   <div class="modal">
-    <h3>💾 법제처에서 HWP/PDF/DOC 저장하는 방법</h3>
-    <p>법제처는 보안상 직접 다운로드 링크를 제공하지 않습니다. 다음 절차를 따라주세요:</p>
+    <h3>💾 규정 원문 확보 방법</h3>
+    <p style="margin-bottom:0.5rem;"><b>① 법령 (법제처 ⚖️)</b></p>
     <ol>
-      <li>이 페이지에서 원하는 <b>법령명을 클릭</b> → 새 탭에서 법제처 페이지가 열림</li>
-      <li>법제처 페이지 우측 상단의 <kbd>💾 저장</kbd> 아이콘 클릭</li>
-      <li>팝업에서 원하는 형식 선택: <b>HWP / HWPX / PDF / DOC</b></li>
-      <li><kbd>인쇄/저장</kbd> 버튼 클릭 → 파일 다운로드 시작</li>
+      <li>법령명 클릭 → 법제처 페이지 진입</li>
+      <li>우상단 <b>저장 버튼(💾)</b> 클릭</li>
+      <li>HWP / HWPX / PDF / DOC 형식 선택 → 다운로드</li>
     </ol>
-    <p style="font-size:0.85rem; color:var(--muted); margin-bottom:1rem;">💡 <b>팁</b>: KITECH 내부규정은 검색 페이지로 연결됩니다. 원문 PDF는 KITECH 정보공개 청구 또는 통합공시 PDF에서 확인하세요.</p>
+    <p style="margin-bottom:0.5rem;"><b>② 비공개 내부규정 (🔒)</b></p>
+    <ul>
+      <li><a href="https://www.kitech.re.kr/disclosure/system" target="_blank" rel="noopener">KITECH 정보공개 청구</a> 또는 <a href="https://www.open.go.kr" target="_blank" rel="noopener">정부 정보공개 포털</a>에서 청구</li>
+      <li>처리 기한: 청구일로부터 10일 이내 (연장 가능)</li>
+    </ul>
     <button class="modal-close" onclick="closeGuide()">확인</button>
   </div>
 </div>
 
-<!-- Toast -->
-<div class="toast" id="toast">링크가 복사되었습니다 ✓</div>
+<div class="toast" id="toast">완료 ✓</div>
 
 <script>
-// 다크모드
 function toggleTheme() {
   const cur = document.documentElement.dataset.theme;
   const next = cur === 'dark' ? 'light' : 'dark';
@@ -623,60 +490,52 @@ function toggleTheme() {
   document.getElementById('themeBtn').textContent = saved === 'dark' ? '☀️' : '🌙';
 })();
 
-// 검색 필터
+let currentFilter = 'all';
+function setFilter(btn) {
+  document.querySelectorAll('.filter-btn[data-filter]').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  currentFilter = btn.dataset.filter;
+  filterRows();
+}
+
 function filterRows() {
   const q = document.getElementById('searchInput').value.trim().toLowerCase();
   let visible = 0;
-  let totalSections = 0, visibleSections = 0;
+  let total = 0;
 
   document.querySelectorAll('section[data-section]').forEach(sec => {
-    totalSections++;
     const rows = sec.querySelectorAll('tbody tr');
-    let secVisible = 0;
+    let secVisible = 0, secTotal = 0;
     rows.forEach(tr => {
+      secTotal++; total++;
       const name = (tr.dataset.name || '').toLowerCase();
       const text = tr.textContent.toLowerCase();
-      const match = !q || name.includes(q) || text.includes(q);
-      tr.classList.toggle('hidden', !match);
-      if (match) { secVisible++; visible++; }
+      const status = tr.dataset.status;
+      const matchSearch = !q || name.includes(q) || text.includes(q);
+      const matchFilter = currentFilter === 'all' ||
+                          (currentFilter === 'open' && (status === 'open' || status === 'law')) ||
+                          (currentFilter === 'law' && status === 'law');
+      const show = matchSearch && matchFilter;
+      tr.classList.toggle('hidden', !show);
+      if (show) { secVisible++; visible++; }
     });
     sec.classList.toggle('hidden', secVisible === 0);
-    if (secVisible > 0) visibleSections++;
     const countEl = sec.querySelector('.count');
     if (countEl) {
-      const total = countEl.dataset.count;
-      countEl.textContent = q ? `${secVisible}/${total}` : total;
+      const t = countEl.dataset.count;
+      countEl.textContent = (q || currentFilter !== 'all') ? `${secVisible}/${t}` : t;
     }
   });
 
-  const stat = document.getElementById('stat');
-  stat.innerHTML = q ? `검색결과 <strong>${visible}</strong>건` : `전체 <strong>53</strong>건`;
+  document.getElementById('totalCount').textContent = visible;
+  document.getElementById('stat').innerHTML = (q || currentFilter !== 'all')
+    ? `결과 <strong id="totalCount">${visible}</strong>건`
+    : `전체 <strong id="totalCount">${total}</strong>건`;
   document.getElementById('emptyState').classList.toggle('show', visible === 0);
 }
 
-// 링크 복사
-function copyLink(btn) {
-  const url = btn.dataset.url;
-  navigator.clipboard.writeText(url).then(() => {
-    showToast('링크가 복사되었습니다 ✓');
-  }).catch(() => {
-    showToast('복사 실패 — 수동으로 복사해주세요');
-  });
-}
-function showToast(msg) {
-  const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 2000);
-}
-
-// 가이드 모달
-function openGuide() {
-  document.getElementById('guideModal').classList.add('show');
-}
-function closeGuide() {
-  document.getElementById('guideModal').classList.remove('show');
-}
+function openGuide() { document.getElementById('guideModal').classList.add('show'); }
+function closeGuide() { document.getElementById('guideModal').classList.remove('show'); }
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') closeGuide();
   if (e.key === '/' && document.activeElement.tagName !== 'INPUT') {
